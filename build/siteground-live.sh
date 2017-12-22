@@ -1,35 +1,35 @@
 cd ~/rossedlin.com/
-echo "Install -> laravel-stage.rossedlin.com"
+echo "Install -> api.rossedlin.com"
 
 #Cleanup
-rm -R -f old_www
-rm -R -f www.rossedlin.com-laravel
+rm -R -f old_api
+rm -R -f api.rossedlin.com-laravel
 
 #Git
-git clone -b master https://bitbucket.org/cuttingweb/www.rossedlin.com-laravel
+git clone -b master https://github.com/rossedlin/api.rossedlin.com-laravel
 
-if [ -d ~/rossedlin.com/www.rossedlin.com-laravel ]; then
+if [ -d ~/rossedlin.com/api.rossedlin.com-laravel ]; then
 
     #Composer
-    cd ~/rossedlin.com/www.rossedlin.com-laravel
+    cd ~/rossedlin.com/api.rossedlin.com-laravel
     composer install
     composer update
 
     #Environment File
     cd ~/rossedlin.com/
-    cp ~/rossedlin.com/www/.env ~/rossedlin.com/www.rossedlin.com-laravel/.env
+    cp ~/rossedlin.com/api/.env ~/rossedlin.com/api.rossedlin.com-laravel/.env
 
     #Folders
     cd ~/rossedlin.com/
-    mv www old_www
-    mv www.rossedlin.com-laravel www
+    mv api old_api
+    mv api.rossedlin.com-laravel api
 
-    #Public
-    cd ~/rossedlin.com/www
-    cp ./build/live/robots.txt ./public/robots.txt
-    cp ./build/live/.htaccess ./public/.htaccess
-
+#    #Public
+#    cd ~/rossedlin.com/www
+#    cp ./build/live/robots.txt ./public/robots.txt
+#    cp ./build/live/.htaccess ./public/.htaccess
+#
     #Permissions
-    chmod 755 -R ~/rossedlin.com/www
+    chmod 755 -R ~/rossedlin.com/api
 
 fi
