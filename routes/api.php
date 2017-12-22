@@ -13,6 +13,30 @@ use Illuminate\Http\Request;
 |
 */
 
+/**
+ * Projects
+ */
+Route::group(['prefix' => 'projects'], function ()
+{
+    /**
+     * Api Integration
+     */
+//    Route::get('/api-integration', 'Projects\ApiIntegration');
+
+    /**
+     * Stripe
+     */
+    Route::group(['prefix' => 'stripe'], function ()
+    {
+        Route::get('/authorise', 'Projects\Stripe@authorise');
+    });
+
+    /**
+     * Web Scraping
+     */
+//    Route::get('/web-scraping', 'Portfolio\WebScraping');
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
