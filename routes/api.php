@@ -13,28 +13,27 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/ping', 'Ping');
+
 /**
  * Projects
  */
 Route::group(['prefix' => 'projects'], function ()
 {
     /**
-     * Api Integration
+     * 
      */
-//    Route::get('/api-integration', 'Projects\ApiIntegration');
+});
 
+Route::group(['prefix' => 'mail'], function ()
+{
     /**
-     * Stripe
+     *
      */
-    Route::group(['prefix' => 'stripe'], function ()
-    {
-        Route::get('/authorise', 'Projects\Stripe@authorise');
+    Route::get('/test', function () {
+        return view('welcome');
     });
 
-    /**
-     * Web Scraping
-     */
-//    Route::get('/web-scraping', 'Portfolio\WebScraping');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
