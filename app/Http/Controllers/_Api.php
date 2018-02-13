@@ -10,28 +10,27 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 abstract class _Api extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
-    /** @var array $data */
-    private $data = [];
 
     /**
      * @return array
      */
-    abstract protected function invoke();
+    abstract protected function getPayload();
 
     /**
      * @return string
      */
     public function __invoke()
     {
-        return json_encode($this->getData());
+        return json_encode($this->getOutput());
     }
 
     /**
      * @return array
      */
-    protected function getData()
+    protected function getOutput()
     {
-        return $this->data;
+        return [
+            'payload' => $this->getPayload(),
+        ];
     }
 }
