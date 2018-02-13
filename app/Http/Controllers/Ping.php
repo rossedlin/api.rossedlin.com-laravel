@@ -14,7 +14,7 @@ use \Cryslo\Object;
  * Date: 13/02/2018
  * Time: 11:11
  *
- * Class Test
+ * Class Ping
  *
  * @package App\Http\Controllers
  */
