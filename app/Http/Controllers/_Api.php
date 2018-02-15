@@ -31,7 +31,7 @@ abstract class _Api extends BaseController
 	{
 		$this->request = $request;
 
-		return json_encode($this->getOutput());
+		return json_encode($this->getOutput(), JSON_PRETTY_PRINT);
 	}
 
 	/**
