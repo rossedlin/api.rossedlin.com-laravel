@@ -25,17 +25,10 @@ Route::group(['prefix' => 'projects'], function ()
      */
 });
 
-Route::group(['prefix' => 'mail'], function ()
+Route::group(['prefix' => 'email'], function ()
 {
     /**
      *
      */
-    Route::get('/test', function () {
-        return view('welcome');
-    });
-
-});
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    Route::post('/send', 'Email\Send');
 });
