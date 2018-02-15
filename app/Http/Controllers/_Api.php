@@ -3,34 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 abstract class _Api extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+	use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    /**
-     * @return array
-     */
-    abstract protected function getPayload();
+	/**
+	 * @var Request $request
+	 */
+	private $request;
 
-    /**
-     * @return string
-     */
-    public function __invoke()
-    {
-        return json_encode($this->getOutput());
-    }
+	/**
+	 * @return array
+	 */
+	abstract protected function getPayload();
 
-    /**
-     * @return array
-     */
-    protected function getOutput()
-    {
-        return [
-            'payload' => $this->getPayload(),
-        ];
-    }
+	/**
+	 * @param Request $request
+	 *
+	 * @return string
+	 */
+	public function __invoke(Request $request)
+	{
+		$this->request = $request;
+
+		return json_encode($this->getOutput());
+	}
+
+	/**
+	 * @return array
+	 */
+	protected function getOutput()
+	{
+		return [
+			'payload' => $this->getPayload(),
+		];
+	}
+
+	/**
+	 * @return Request
+	 */
+	protected function getRequest()
+	{
+		return $this->request;
+	}
 }
