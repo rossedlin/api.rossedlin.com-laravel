@@ -6,6 +6,9 @@
  *
  * Date: 15/02/2018
  * Time: 14:49
+ *
+ * @var string $title
+ * @var string $content
  */
 ?>
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -318,49 +321,10 @@
                             <tr>
                                 <td align="left"
                                     style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                    <!-- section text ======-->
 
-                                    <p style="line-height: 24px; margin-bottom:15px;">
-
-                                        Firstname,
-
-                                    </p>
-                                    <p style="line-height: 24px;margin-bottom:15px;">
-                                        Great news, you will now be the first to see exclusive previews of our latest
-                                        collections, hear about news from the Abacus!
-                                        community and get the most up to date news in the world of fashion.
-                                    </p>
-                                    <p style="line-height: 24px; margin-bottom:20px;">
-                                        You can access your account at any point using the link below.
-                                    </p>
-                                    <table border="0" align="center" width="180" cellpadding="0" cellspacing="0"
-                                           bgcolor="5caad2" style="margin-bottom:20px;">
-
-                                        <tr>
-                                            <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td align="center"
-                                                style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 22px; letter-spacing: 2px;">
-                                                <!-- main section button -->
-
-                                                <div style="line-height: 22px;">
-                                                    <a href="" style="color: #ffffff; text-decoration: none;">MY
-                                                        ACCOUNT</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
-                                        </tr>
-
-                                    </table>
-                                    <p style="line-height: 24px">
-                                        Love,</br>
-                                        The MDB team
-                                    </p>
+                                    <!-- Content -->
+                                    <p><?= $content ?></p>
+                                    <!-- END Content -->
 
                                 </td>
                             </tr>
@@ -515,9 +479,9 @@
                                                 class="text_color">
                                                 <div style="color: #333333; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 600; mso-line-height-rule: exactly; line-height: 23px;">
 
-                                                    Email us: <br/> <a href="mailto:"
-                                                                       style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">contact@mdbootstrap
-                                                        .com</a>
+                                                    Email me: <br/> <a href="mailto:"
+                                                                       style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">
+                                                        contact@rossedlin.com</a>
 
                                                 </div>
                                             </td>
@@ -552,21 +516,21 @@
                                                 <table border="0" align="right" cellpadding="0" cellspacing="0">
                                                     <tr>
                                                         <td>
-                                                            <a href="https://www.facebook.com/mdbootstrap"
-                                                               style="display: block; border-style: none !important; border: 0 !important;"><img
-                                                                        width="24" border="0" style="display: block;"
-                                                                        src="http://i.imgur.com/Qc3zTxn.png" alt=""></a>
-                                                        </td>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                        <td>
-                                                            <a href="https://twitter.com/MDBootstrap"
+                                                            <a href="https://www.rossedlin.com/link/facebook"
                                                                style="display: block; border-style: none !important; border: 0 !important;"><img
                                                                         width="24" border="0" style="display: block;"
                                                                         src="http://i.imgur.com/RBRORq1.png" alt=""></a>
                                                         </td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                                         <td>
-                                                            <a href="https://plus.google.com/u/0/b/107863090883699620484/107863090883699620484/posts"
+                                                            <a href="https://www.rossedlin.com/link/twitter"
+                                                               style="display: block; border-style: none !important; border: 0 !important;"><img
+                                                                        width="24" border="0" style="display: block;"
+                                                                        src="http://i.imgur.com/Qc3zTxn.png" alt=""></a>
+                                                        </td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                        <td>
+                                                            <a href="https://www.rossedlin.com/link/google-plus"
                                                                style="display: block; border-style: none !important; border: 0 !important;"><img
                                                                         width="24" border="0" style="display: block;"
                                                                         src="http://i.imgur.com/Wji3af6.png" alt=""></a>
