@@ -33,18 +33,22 @@ class Send extends Controllers\_Api
 		$this->email = new \Cryslo\Object\Email();
 		$this->email->setTo($this->getRequest()->input('to', 'contact@rossedlin.com'));
 		$this->email->setFrom($this->getRequest()->input('from', 'noreply@rossedlin.com'));
-		$this->email->setContentType($this->getRequest()->input('content_type'));
 		$this->email->setSubject($this->getRequest()->input('subject'));
-		$this->email->setBody($this->getRequest()->input('body'));
 
+		/**
+		 * Args
+		 */
+		$this->email->setArgs([
+			'title' => $this->getRequest()->input('title'),
+			'content' => $this->getRequest()->input('content'),
+		]);
+
+		/**
+		 * Fire off an Event for Before Send
+		 */
 		event(new \App\Events\Email\BeforeSend($this->email));
 
-		$args = [
-			'title' => 'Title Coming Soon',
-			'content' => $this->email->getBody()
-		];
-
-		\Mail::send('emails.clean.message', $args, function ($message)
+		\Mail::send('emails.clean.message', $this->email->getArgs(), function ($message)
 		{
 			/**
 			 * @var \Illuminate\Mail\Message $message

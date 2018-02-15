@@ -18,7 +18,8 @@ class NewLineToBreak
 	{
 		if ($event->getEmail()->getContentType() == Consts::CONTENT_TYPE_PLAIN)
 		{
-			$event->getEmail()->setBody(nl2br($event->getEmail()->getBody()));
+			$content = $event->getEmail()->getArg('content');
+			$event->getEmail()->setArg('content', nl2br($content));
 		}
 	}
 }
