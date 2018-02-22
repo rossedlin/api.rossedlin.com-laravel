@@ -32,3 +32,15 @@ Route::group(['prefix' => 'email'], function ()
      */
     Route::post('/send', 'Email\Send');
 });
+
+Route::group(['prefix' => 'test'], function ()
+{
+    /**
+     *
+     */
+    Route::post('/post', 'Test\Post');
+});
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
