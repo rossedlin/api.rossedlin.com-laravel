@@ -18,6 +18,13 @@ $this->get('password/reset/{token}', 'Auth\ResetPassword@showResetForm')->name('
 $this->post('password/reset', 'Auth\ResetPassword@reset');
 
 /**
+ * Debug
+ */
+Route::group(['prefix' => 'debug'], function () {
+    Route::get('vue', 'Debug\VueController');
+});
+
+/**
  * Authentication
  */
 //Route::group(['prefix' => 'auth'], function (){
