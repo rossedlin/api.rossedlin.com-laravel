@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Http\Controllers\_Web;
+use App\Http\Controllers\_WebController;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class Register extends _Web
+class Register extends _WebController
 {
     /*
     |--------------------------------------------------------------------------

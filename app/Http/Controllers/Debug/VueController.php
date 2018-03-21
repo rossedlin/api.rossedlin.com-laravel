@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Debug;
 
-use App\Http\Controllers\_Web;
+use App\Http\Controllers\_WebController;
 use Illuminate\Http\Request;
 
 /**
@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
  * Date: 15/03/18
  * Time: 10:42
  */
-class VueController extends _Web
+class VueController extends _WebController
 {
     /**
      * @param Request $request
