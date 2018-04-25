@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Base;
 
+use App\Exceptions\ApiException;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -19,6 +20,7 @@ abstract class ApiController extends BaseController
 
     /**
      * @return array
+     * @throws ApiException
      */
     abstract protected function getPayload();
 
@@ -39,8 +41,14 @@ abstract class ApiController extends BaseController
      */
     protected function getOutput()
     {
+        try {
+            $payload = $this->getPayload();
+        } catch (ApiException $e) {
+            $payload = $e->getMessage();
+        }
+
         return [
-            'payload' => $this->getPayload(),
+            'payload' => $payload,
         ];
     }
 
