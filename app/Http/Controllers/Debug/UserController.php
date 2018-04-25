@@ -28,7 +28,7 @@ class UserController extends Base\WebController
         $user = new User();
         $user->username = 'rossedlin';
         $user->email = "rossedlin@gmail.com";
-        $user->setPassword('FNAm57ehihCX46V7');
+        $user->setPassword('FNAm57ehihCX46V7'); //todo remove
 
         exit;
     }
