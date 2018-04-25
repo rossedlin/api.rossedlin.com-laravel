@@ -18,7 +18,7 @@ use \Cryslo\Object;
  *
  * @package App\Http\Controllers\Email
  */
-class SendController extends Controllers\_ApiController
+class SendControllerAbstract extends Controllers\AbstractApiController
 {
 	/**
 	 * @var \Cryslo\Object\Email $email
