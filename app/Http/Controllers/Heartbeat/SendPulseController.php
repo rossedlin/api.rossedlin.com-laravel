@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Heartbeat;
 
 use \App\Http\Controllers\Base;
-use App\Model\HeartbeatEntity;
+use \App\Model\HeartbeatEntity;
+use \App\Model\HeartbeatPulse;
 
 /**
  * Created by PhpStorm.
@@ -24,9 +25,10 @@ class SendPulseController extends Base\ApiController
      */
     protected function getPayload()
     {
-        $inserted = false;
-        $code     = $this->getRequest()->post('code');
-        $status   = $this->getRequest()->post('status');
+        $new_entity     = false;
+        $recorded_pulse = false;
+        $code           = $this->getRequest()->post('code');
+        $status         = $this->getRequest()->post('status');
 
         /**
          * @var \App\Model\HeartbeatEntity $entity
@@ -34,17 +36,26 @@ class SendPulseController extends Base\ApiController
         $entity = HeartbeatEntity::where('code', '=', $code)->first();
 
         if ($entity === null) {
-            $inserted     = true;
+            $new_entity   = true;
             $entity       = new HeartbeatEntity;
             $entity->code = $code;
             $entity->save();
         }
 
+        $pulse                      = new HeartbeatPulse();
+        $pulse->heartbeat_entity_id = $entity->id;
+        $pulse->ip_address          = $this->getRequest()->ip();
+
+        if ($pulse->save()) {
+            $recorded_pulse = true;
+        }
+
         return [
-            'code'     => $code,
-            'status'   => $status,
-            'inserted' => $inserted,
-            'entity'   => $entity,
+            'code'           => $code,
+            'status'         => $status,
+            'recorded_pulse' => $recorded_pulse,
+            'new_entity'     => $new_entity,
+            'entity'         => $entity,
         ];
     }
 
