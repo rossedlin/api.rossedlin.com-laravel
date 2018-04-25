@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers\Email;
 
-use \App\Http\Controllers;
+use \App\Http\Controllers\Base;
 use \Cryslo\Api;
 use \Cryslo\Core;
 use \Cryslo\Object;
@@ -18,7 +18,7 @@ use \Cryslo\Object;
  *
  * @package App\Http\Controllers\Email
  */
-class SendController extends Controllers\ApiController
+class SendController extends Base\ApiController
 {
 	/**
 	 * @var \Cryslo\Object\Email $email
