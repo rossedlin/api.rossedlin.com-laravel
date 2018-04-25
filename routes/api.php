@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth.username-password']], function () {
      */
     Route::group(['prefix' => 'heartbeat'], function () {
         Route::post('/send-pulse', 'Heartbeat\SendPulseController');
+        Route::post('/check-pulse', 'Heartbeat\CheckPulseController');
     });
 });
 
