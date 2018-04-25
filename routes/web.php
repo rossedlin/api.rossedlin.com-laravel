@@ -1,21 +1,6 @@
 <?php
 
-Route::get('/home', 'Home@index')->name('home');
-
-// Authentication Routes...
-//$this->get('login', 'Auth\Login@showLoginForm')->name('login');
-//$this->post('login', 'Auth\Login@login');
-//$this->post('logout', 'Auth\Login@logout')->name('logout');
-
-// Registration Routes...
-//$this->get('register', 'Auth\Register@showRegistrationForm')->name('register');
-//$this->post('register', 'Auth\Register@register');
-
-// Password Reset Routes...
-//$this->get('password/reset', 'Auth\ForgotPassword@showLinkRequestForm')->name('password.request');
-//$this->post('password/email', 'Auth\ForgotPassword@sendResetLinkEmail')->name('password.email');
-//$this->get('password/reset/{token}', 'Auth\ResetPassword@showResetForm')->name('password.reset');
-//$this->post('password/reset', 'Auth\ResetPassword@reset');
+Route::get('/', 'WelcomeController');
 
 /**
  * Debug
