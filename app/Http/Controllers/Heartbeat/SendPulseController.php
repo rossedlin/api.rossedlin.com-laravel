@@ -28,7 +28,6 @@ class SendPulseController extends Base\ApiController
         $new_entity     = false;
         $recorded_pulse = false;
         $code           = $this->getRequest()->post('code');
-        $status         = $this->getRequest()->post('status');
 
         /**
          * @var \App\Model\HeartbeatEntity $entity
@@ -52,10 +51,11 @@ class SendPulseController extends Base\ApiController
 
         return [
             'code'           => $code,
-            'status'         => $status,
+            'alive'         => true,
             'recorded_pulse' => $recorded_pulse,
             'new_entity'     => $new_entity,
             'entity'         => $entity,
+            'pulse'          => $pulse,
         ];
     }
 }
