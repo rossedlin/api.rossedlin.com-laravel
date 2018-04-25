@@ -1,10 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use \App\Http\Controllers;
-use \Cryslo\Api;
+use \Cryslo\Enums;
 use \Cryslo\Core;
-use \Cryslo\Object;
 
 /**
  * Created by PhpStorm.
@@ -20,14 +19,13 @@ use \Cryslo\Object;
  */
 class PingController extends _ApiController
 {
-	/**
-	 * @return array
-	 */
-	protected function getPayload()
-	{
-		return [
-			'ip' => Core\Request::server(Core\Consts::REMOTE_ADDR),
-		];
-	}
-
+    /**
+     * @return array
+     */
+    protected function getPayload()
+    {
+        return [
+            'ip' => Core\Request::server(Enums::REMOTE_ADDR),
+        ];
+    }
 }
