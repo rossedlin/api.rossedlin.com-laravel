@@ -2,45 +2,47 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+/**
+ * Ping
+ */
+Route::get('/ping', 'PingController');
 
-Route::get('/ping', 'Ping');
+
 
 /**
- * Projects
+ * Test Methods
  */
-Route::group(['prefix' => 'projects'], function ()
-{
-    /**
-     * 
-     */
-});
-
-Route::group(['prefix' => 'email'], function ()
-{
-    /**
-     *
-     */
-    Route::post('/send', 'Email\Send');
-});
-
-Route::group(['prefix' => 'test'], function ()
-{
-    /**
-     *
-     */
+Route::group(['prefix' => 'test'], function () {
     Route::post('/post', 'Test\Post');
 });
 
+
+
+/**
+ * Main Security Group
+ */
+Route::group(['middleware' => ['auth.username-password']], function () {
+
+    /**
+     * Email
+     */
+    Route::group(['prefix' => 'email'], function () {
+        Route::post('/send', 'Email\SendController');
+    });
+
+    /**
+     * Heartbeat
+     */
+    Route::group(['prefix' => 'heartbeat'], function () {
+        Route::post('/send-pulse', 'Heartbeat\SendPulseController');
+    });
+});
+
+
+
+/**
+ *
+ */
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
