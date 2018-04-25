@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Test;
 
-use \App\Http\Controllers;
+use \App\Http\Controllers\Base;
 
 /**
  * Created by PhpStorm.
@@ -13,7 +13,7 @@ use \App\Http\Controllers;
  * Date: 22/02/18
  * Time: 10:54
  */
-class Post extends Controllers\ApiController
+class Post extends Base\ApiController
 {
     /**
      * @return array

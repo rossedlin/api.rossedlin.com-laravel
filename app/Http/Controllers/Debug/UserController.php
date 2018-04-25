@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Debug;
 
-use App\Http\Controllers\WebController;
+use App\Http\Controllers\Base;
 use App\Model\User;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
  * Class UserController
  * @package App\Http\Controllers\Debug
  */
-class UserController extends WebController
+class UserController extends Base\WebController
 {
     /**
      * @param Request $request
