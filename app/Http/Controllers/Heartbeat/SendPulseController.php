@@ -58,5 +58,4 @@ class SendPulseController extends Base\ApiController
             'entity'         => $entity,
         ];
     }
-
 }
