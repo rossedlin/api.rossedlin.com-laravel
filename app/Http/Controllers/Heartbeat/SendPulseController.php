@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Heartbeat;
 
-use \App\Http\Controllers\AbstractApiController;
+use \App\Http\Controllers\ApiController;
 use App\Model\HeartbeatEntity;
 
 /**
@@ -17,7 +17,7 @@ use App\Model\HeartbeatEntity;
  *
  * @package App\Http\Controllers
  */
-class SendPulseControllerAbstract extends AbstractApiController
+class SendPulseController extends ApiController
 {
     /**
      * @return array

@@ -14,7 +14,7 @@ namespace App\Http\Controllers;
  * Class WelcomeController
  * @package App\Http\Controllers
  */
-class WelcomeControllerAbstract extends AbstractWebController
+class WelcomeController extends WebController
 {
     /**
      * Show the application dashboard.

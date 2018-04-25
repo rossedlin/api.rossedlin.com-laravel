@@ -17,7 +17,7 @@ use \Cryslo\Core;
  *
  * @package App\Http\Controllers
  */
-class PingControllerAbstract extends AbstractApiController
+class PingController extends ApiController
 {
     /**
      * @return array
