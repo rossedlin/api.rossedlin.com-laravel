@@ -4,6 +4,7 @@ echo "Install -> api.rossedlin.com"
 
 #Cleanup
 cd ~/rossedlin.com/
+rm -R -f old-laravel-api
 rm -R -f api.rossedlin.com-laravel
 
 #Git
@@ -23,7 +24,7 @@ if [ -d ~/rossedlin.com/api.rossedlin.com-laravel ]; then
     cp ~/rossedlin.com/laravel-api/.env ~/rossedlin.com/api.rossedlin.com-laravel/.env
 
     #Folders
-    cd ~/rossedlin.com/
+    cd ~/rossedlin.com
     mv laravel-api old-laravel-api
     mv api.rossedlin.com-laravel laravel-api
 
