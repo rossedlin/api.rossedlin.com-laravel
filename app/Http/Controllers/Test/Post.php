@@ -13,7 +13,7 @@ use \App\Http\Controllers;
  * Date: 22/02/18
  * Time: 10:54
  */
-class Post extends Controllers\AbstractApiController
+class Post extends Controllers\ApiController
 {
     /**
      * @return array
