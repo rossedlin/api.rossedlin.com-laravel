@@ -34,6 +34,8 @@ abstract class ApiController extends BaseController
     {
         $this->request = $request;
 
+        $output = $this->getOutput();
+
         /**
          * Log Request
          *
@@ -41,10 +43,10 @@ abstract class ApiController extends BaseController
          */
         $log                  = $this->getRequest()->attributes->get('log_request');
         $log->response_status = 200; //OK
-        $log->response_body   = json_encode($this->getOutput());
+        $log->response_body   = json_encode($output);
         $log->save();
 
-        return response()->json($this->getOutput());
+        return response()->json($output);
     }
 
     /**
