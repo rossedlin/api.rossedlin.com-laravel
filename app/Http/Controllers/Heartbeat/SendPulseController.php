@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Heartbeat;
 
 use \App\Http\Controllers\Base;
-use \App\Model\HeartbeatEntity;
-use \App\Model\HeartbeatPulse;
+use \App\Models\HeartbeatEntity;
+use \App\Models\HeartbeatPulse;
 
 /**
  * Created by PhpStorm.
@@ -30,7 +30,7 @@ class SendPulseController extends Base\ApiController
         $code           = $this->getRequest()->post('code');
 
         /**
-         * @var \App\Model\HeartbeatEntity $entity
+         * @var \App\Models\HeartbeatEntity $entity
          */
         $entity = HeartbeatEntity::where('code', '=', $code)->first();
 

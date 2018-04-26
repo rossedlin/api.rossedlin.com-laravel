@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Cryslo\Core\SaltHash;
 use Illuminate\Database\Eloquent\Model;
