@@ -4,7 +4,7 @@ namespace App\Http\Middleware\Auth;
 
 use Closure;
 
-class UsernamePassword
+class ApiKey
 {
     /**
      * Handle an incoming request.
@@ -18,7 +18,7 @@ class UsernamePassword
         $key = $request->header('key');
 
         if ($key !== env('API_KEY')) {
-            abort(403, 'Unauthorized action.');
+            return response()->json(['error' => ['message' => 'Permission denied']], 403);
         }
 
         return $next($request);

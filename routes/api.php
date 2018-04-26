@@ -21,7 +21,7 @@ Route::group(['prefix' => 'test'], function () {
 /**
  * Main Security Group
  */
-Route::group(['middleware' => ['auth.username-password']], function () {
+Route::group(['middleware' => ['auth.api-key']], function () {
 
     /**
      * Email
