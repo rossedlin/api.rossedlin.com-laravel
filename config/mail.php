@@ -72,8 +72,8 @@ return [
     */
 
     'to' => [
-        'address' => 'ross@rossedlin.com',
-        'name' => 'Ross Edlin'
+        'address' => env('MAIL_TO_ADDRESS', 'ross@rossedlin.com'),
+        'name' => env('MAIL_TO_NAME', 'Ross Edlin'),
     ],
 
     /*
