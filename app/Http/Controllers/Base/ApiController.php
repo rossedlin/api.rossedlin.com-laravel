@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Base;
 
 use App\Exceptions\ApiException;
+use App\Models\LogRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -32,6 +33,15 @@ abstract class ApiController extends BaseController
     public function __invoke(Request $request)
     {
         $this->request = $request;
+
+        /**
+         * Log Request
+         *
+         * @var LogRequests $log
+         */
+        $log = $this->getRequest()->attributes->get('log_request');
+        $log->response_body = json_encode($this->getOutput());
+        $log->save();
 
         return json_encode($this->getOutput(), JSON_PRETTY_PRINT);
     }
