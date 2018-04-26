@@ -20,6 +20,7 @@ class LogRequests extends Migration
             $table->text('request_header');
             $table->text('request_args');
             $table->text('request_body');
+            $table->integer('response_status')->nullable();
             $table->text('response_header')->nullable();
             $table->text('response_body')->nullable();
             $table->timestampsTz();

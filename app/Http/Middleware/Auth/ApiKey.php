@@ -18,6 +18,22 @@ class ApiKey
         $key = $request->header('key');
 
         if ($key !== env('API_KEY')) {
+
+            /**
+             * Sleep for 2 seconds to delay brunt force
+             */
+            sleep(2);
+
+            /**
+             * Log Request
+             *
+             * @var LogRequests $log
+             */
+            $log                  = $request->attributes->get('log_request');
+            $log->response_status = 403; //OK
+            $log->response_body   = json_encode(['error' => ['message' => 'Permission denied']]);
+            $log->save();
+
             return response()->json(['error' => ['message' => 'Permission denied']], 403);
         }
 

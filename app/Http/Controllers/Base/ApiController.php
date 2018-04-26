@@ -39,11 +39,12 @@ abstract class ApiController extends BaseController
          *
          * @var LogRequests $log
          */
-        $log = $this->getRequest()->attributes->get('log_request');
-        $log->response_body = json_encode($this->getOutput());
+        $log                  = $this->getRequest()->attributes->get('log_request');
+        $log->response_status = 200; //OK
+        $log->response_body   = json_encode($this->getOutput());
         $log->save();
 
-        return json_encode($this->getOutput(), JSON_PRETTY_PRINT);
+        return response()->json($this->getOutput());
     }
 
     /**
@@ -53,13 +54,21 @@ abstract class ApiController extends BaseController
     {
         try {
             $payload = $this->getPayload();
-        } catch (ApiException $e) {
-            $payload = $e->getMessage();
-        }
 
-        return [
-            'payload' => $payload,
-        ];
+            return [
+                'payload' => $payload,
+            ];
+        } catch (ApiException $e) {
+
+            /**
+             * Display error message
+             */
+            return [
+                'error' => [
+                    'message' => $e->getMessage(),
+                ]
+            ];
+        }
     }
 
     /**
