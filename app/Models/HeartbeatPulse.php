@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use App\Enums\Heartbeat\PulseAttributes;
 use Illuminate\Database\Eloquent\Model;

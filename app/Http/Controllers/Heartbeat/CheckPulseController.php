@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Heartbeat;
 use App\Enums\TimeAttributes;
 use App\Exceptions\ApiException;
 use \App\Http\Controllers\Base;
-use \App\Model\HeartbeatEntity;
-use \App\Model\HeartbeatPulse;
+use \App\Models\HeartbeatEntity;
+use \App\Models\HeartbeatPulse;
 
 /**
  * Created by PhpStorm.
@@ -33,7 +33,7 @@ class CheckPulseController extends Base\ApiController
         $alive      = false;
 
         /**
-         * @var \App\Model\HeartbeatEntity $entity
+         * @var \App\Models\HeartbeatEntity $entity
          */
         $entity = HeartbeatEntity::where('code', '=', $code)
                                  ->first();
@@ -43,7 +43,7 @@ class CheckPulseController extends Base\ApiController
         }
 
         /**
-         * @var \App\Model\HeartbeatEntity $entity
+         * @var \App\Models\HeartbeatEntity $entity
          */
         $pulse = HeartbeatPulse::where('heartbeat_entity_id', '=', $entity->id)
                                ->orderBy('created_at', 'desc')

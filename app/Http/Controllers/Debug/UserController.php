@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Debug;
 
 use App\Http\Controllers\Base;
-use App\Model\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
