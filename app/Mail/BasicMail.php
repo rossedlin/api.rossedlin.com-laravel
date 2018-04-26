@@ -20,19 +20,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
  */
 class BasicMail extends Mailable
 {
-//    use Queueable, SerializesModels;
+    use Queueable, SerializesModels;
 
+    protected $title;
     protected $content;
 
     /**
      * Create a new message instance.
      *
+     * @param string $title
      * @param string $content
      *
      * @return void
      */
-    public function __construct(string $content)
+    public function __construct(string $title, string $content)
     {
+        $this->title   = $title;
         $this->content = $content;
     }
 
@@ -44,7 +47,9 @@ class BasicMail extends Mailable
     public function build()
     {
         return $this->view('mail.basic.message', [
+            'title'   => $this->title,
             'content' => $this->content,
-        ]);
+        ])
+                    ->subject($this->title);
     }
 }
