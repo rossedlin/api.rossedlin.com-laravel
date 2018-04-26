@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware\Auth;
 
+use App\Models\LogRequests;
 use Closure;
 
 class ApiKey
