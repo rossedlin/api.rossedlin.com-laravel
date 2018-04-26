@@ -18,6 +18,7 @@ class LogRequests extends Migration
             $table->string('request_ip', 15);
             $table->string('request_uri');
             $table->text('request_header');
+            $table->text('request_args');
             $table->text('request_body');
             $table->text('response_header')->nullable();
             $table->text('response_body')->nullable();

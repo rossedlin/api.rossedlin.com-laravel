@@ -19,8 +19,11 @@ class LogRequests
         $log->request_ip     = $request->ip();
         $log->request_uri    = $request->getUri();
         $log->request_header = json_encode($request->header());
+        $log->request_args   = json_encode($request->all());
         $log->request_body   = $request->getContent();
         $log->save();
+
+        $request->attributes->add(['log_request' => $log]);
 
         return $next($request);
     }
