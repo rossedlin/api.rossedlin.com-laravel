@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Mail;
 
 use \App\Exceptions\ApiException;
 use \App\Http\Controllers\Base;
+use App\Mail\BasicMail;
+use App\Mail\CleanMail;
+use App\Mail\HelloWorldMail;
 use \App\Objects\Mail;
 
 //use \Cryslo\Api;
@@ -25,11 +28,6 @@ use \App\Objects\Mail;
 class SendController extends Base\ApiController
 {
     /**
-     * @var Mail $email
-     */
-    private $email;
-
-    /**
      * @return array
      * @throws ApiException
      */
@@ -38,7 +36,7 @@ class SendController extends Base\ApiController
         $to      = $this->getRequest()->get('to');
         $from    = $this->getRequest()->get('from', 'noreply@rossedlin.com');
         $subject = $this->getRequest()->get('subject', 'Ross Edlin');
-        $message = $this->getRequest()->get('message');
+        $content = $this->getRequest()->get('content');
 
         /**
          * Checks
@@ -47,42 +45,26 @@ class SendController extends Base\ApiController
             throw new ApiException("Missing required field: to");
         }
 
-        /**
-         * Build Email Object
-         */
-        $this->email = new Mail();
-        $this->email->setTo($to);
-        $this->email->setFrom($from);
-        $this->email->setSubject($this->getRequest()->input('subject'));
+        if ($content === null) {
+            throw new ApiException("Missing required field: content");
+        }
 
-
-//        /**
-//         * Fire off an Event for Before Send
-//         */
-//        event(new \App\Events\Email\BeforeSend($this->email));
 
         /**
-         * Args
+         * Send the mail
          */
-        $args = [
-            'title'   => $this->getRequest()->input('title'),
-            'content' => $this->getRequest()->input('content'),
-        ];
+        \Mail::to($to)
+             ->send(new BasicMail($subject, $content));
 
-        \Mail::send('mail.clean.message', $args, function ($mail) {
-
-            /**
-             * @var \Illuminate\Mail\Message $mail
-             */
-            $mail->from('contact@rossedlin.com', 'Ross Edlin');
-            $mail->setSubject('Ross Edlin');
-            $mail->to('rossedlin@gmail.com');
-        });
-
+        /**
+         * Finish
+         */
         return [
-            'to'      => $to,
-            'subject' => $subject,
-            'message' => $message,
+            'to'       => $to,
+            'from'     => $from,
+            'template' => 'basic',
+            'subject'  => $subject,
+            'message'  => $content,
         ];
     }
 }

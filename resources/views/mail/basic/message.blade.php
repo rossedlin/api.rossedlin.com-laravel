@@ -7,12 +7,13 @@
  * Date: 13/02/2018
  * Time: 15:49
  *
+ * @var string $title
  * @var string $content
  */
 ?>
 <html>
-<head>Ross Edlin</head>
-<body style="background: black; color: white">
-<p><?= $content ?></p>
+<head><?= $title ?></head>
+<body>
+    <p><?= $content ?></p>
 </body>
 </html>

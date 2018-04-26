@@ -72,7 +72,7 @@ return [
     */
 
     'to' => [
-        'address' => env('MAIL_TO_ADDRESS', 'ross@rossedlin.com'),
+        'address' => env('MAIL_TO_ADDRESS', 'contact@rossedlin.com'),
         'name' => env('MAIL_TO_NAME', 'Ross Edlin'),
     ],
 
