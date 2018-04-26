@@ -15,9 +15,12 @@ class LogRequests extends Migration
     {
         Schema::create('log_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ip_address', 15);
-            $table->text('header');
-            $table->text('body');
+            $table->string('request_ip', 15);
+            $table->string('request_uri');
+            $table->text('request_header');
+            $table->text('request_body');
+            $table->text('response_header')->nullable();
+            $table->text('response_body')->nullable();
             $table->timestampsTz();
         });
     }
