@@ -26,8 +26,8 @@ Route::group(['middleware' => ['auth.api-key']], function () {
     /**
      * Email
      */
-    Route::group(['prefix' => 'email'], function () {
-        Route::post('/send', 'Email\SendController');
+    Route::group(['prefix' => 'mail'], function () {
+        Route::post('/send', 'Mail\SendController');
     });
 
     /**
