@@ -24,6 +24,13 @@ Route::group(['prefix' => 'test'], function () {
 Route::group(['middleware' => ['auth.api-key']], function () {
 
     /**
+     * Contact
+     */
+    Route::group(['prefix' => 'contact'], function () {
+        Route::post('/me', 'Contact\MeController');
+    });
+
+    /**
      * Email
      */
     Route::group(['prefix' => 'mail'], function () {
