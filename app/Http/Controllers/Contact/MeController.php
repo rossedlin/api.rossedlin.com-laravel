@@ -28,6 +28,7 @@ class MeController extends Base\ApiController
      */
     protected function getPayload()
     {
+        $name    = $this->getRequest()->get('name');
         $from    = $this->getRequest()->get('from');
         $subject = $this->getRequest()->get('subject', 'Contact Ross Edlin');
         $content = $this->getRequest()->get('content');
@@ -35,12 +36,16 @@ class MeController extends Base\ApiController
         /**
          * Checks
          */
+        if ($name === null) {
+            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing an name...");
+        }
+
         if ($from === null) {
-            throw new ApiException("Missing required field: from");
+            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing an email...");
         }
 
         if ($content === null) {
-            throw new ApiException("Missing required field: content");
+            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're sending a blank message...");
         }
 
 
