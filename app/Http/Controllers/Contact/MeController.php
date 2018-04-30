@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Contact;
 
-use App\Exceptions\ApiException;
+use \App\Exceptions\ApiException;
 use \App\Http\Controllers\Base;
-use App\Mail\ContactMeMail;
+use \App\Mail\ContactMeMail;
+use \App\Models\LogContact;
 
 /**
  * Created by PhpStorm.
@@ -29,7 +30,7 @@ class MeController extends Base\ApiController
         $name    = $this->getRequest()->get('name');
         $from    = $this->getRequest()->get('from');
         $subject = $this->getRequest()->get('subject', 'Contact - Ross Edlin');
-        $content = $this->getRequest()->get('content');
+        $message = $this->getRequest()->get('message');
 
         /**
          * Checks
@@ -42,16 +43,26 @@ class MeController extends Base\ApiController
             throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing an email...");
         }
 
-        if ($content === null) {
+        if ($message === null) {
             throw new ApiException("<strong>Ops...</strong> <br />Looks like you're sending a blank message...");
         }
+
+        /**
+         * Log Contact
+         */
+        $log             = new LogContact();
+        $log->ip_address = $this->getRequest()->ip();
+        $log->name       = $name;
+        $log->email      = $from;
+        $log->message    = $message;
+        $log->save();
 
 
         /**
          * Send the mail
          */
         \Mail::to('contact@rossedlin.com')
-             ->send(new ContactMeMail($subject, $name, $from, $content));
+             ->send(new ContactMeMail($subject, $name, $from, $message));
 
         /**
          * Finish
@@ -60,7 +71,7 @@ class MeController extends Base\ApiController
             'from'     => $from,
             'template' => 'basic',
             'subject'  => $subject,
-            'message'  => $content,
+            'message'  => $message,
             'success'  => true,
         ];
     }
