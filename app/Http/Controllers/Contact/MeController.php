@@ -28,7 +28,7 @@ class MeController extends Base\ApiController
     protected function getPayload()
     {
         $name    = $this->getRequest()->get('name');
-        $from    = $this->getRequest()->get('from');
+        $email   = $this->getRequest()->get('email');
         $subject = $this->getRequest()->get('subject', 'Contact - Ross Edlin');
         $message = $this->getRequest()->get('message');
 
@@ -39,7 +39,7 @@ class MeController extends Base\ApiController
             throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing an name...");
         }
 
-        if ($from === null) {
+        if ($email === null) {
             throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing an email...");
         }
 
@@ -53,7 +53,7 @@ class MeController extends Base\ApiController
         $log             = new LogContact();
         $log->ip_address = $this->getRequest()->ip();
         $log->name       = $name;
-        $log->email      = $from;
+        $log->email      = $email;
         $log->message    = $message;
         $log->save();
 
@@ -62,13 +62,14 @@ class MeController extends Base\ApiController
          * Send the mail
          */
         \Mail::to('contact@rossedlin.com')
-             ->send(new ContactMeMail($subject, $name, $from, $message));
+             ->cc($email)
+             ->send(new ContactMeMail($subject, $name, $email, $message));
 
         /**
          * Finish
          */
         return [
-            'from'     => $from,
+            'email'    => $email,
             'template' => 'basic',
             'subject'  => $subject,
             'message'  => $message,
