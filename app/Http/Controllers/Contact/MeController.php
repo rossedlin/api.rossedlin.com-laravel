@@ -62,7 +62,7 @@ class MeController extends Base\ApiController
          * Send the mail
          */
         \Mail::to('contact@rossedlin.com')
-             ->cc($email)
+//             ->cc($email) //causing issues because of FREE package
              ->send(new ContactMeMail($subject, $name, $email, $message));
 
         /**
