@@ -58,8 +58,6 @@ class ContactMeMail extends Mailable
             'email'   => $this->email,
             'content' => $this->content,
         ])
-                    ->subject($this->title)
-                    ->from($this->email)
-                    ->bcc('ross@rossedlin.com');
+                    ->subject($this->title);
     }
 }
