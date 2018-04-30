@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Contact;
 
 use App\Exceptions\ApiException;
 use \App\Http\Controllers\Base;
-use App\Mail\BasicMail;
-use \Cryslo\Enums;
-use \Cryslo\Core;
+use App\Mail\ContactMeMail;
 
 /**
  * Created by PhpStorm.
@@ -30,7 +28,7 @@ class MeController extends Base\ApiController
     {
         $name    = $this->getRequest()->get('name');
         $from    = $this->getRequest()->get('from');
-        $subject = $this->getRequest()->get('subject', 'Contact Ross Edlin');
+        $subject = $this->getRequest()->get('subject', 'Contact - Ross Edlin');
         $content = $this->getRequest()->get('content');
 
         /**
@@ -53,7 +51,7 @@ class MeController extends Base\ApiController
          * Send the mail
          */
         \Mail::to('contact@rossedlin.com')
-             ->send(new BasicMail($subject, $content));
+             ->send(new ContactMeMail($subject, $name, $from, $content));
 
         /**
          * Finish
@@ -63,6 +61,7 @@ class MeController extends Base\ApiController
             'template' => 'basic',
             'subject'  => $subject,
             'message'  => $content,
+            'success'  => true,
         ];
     }
 }
