@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'WelcomeController');
+Route::get('/uptime', 'UptimeController');
 
 /**
  * Debug
