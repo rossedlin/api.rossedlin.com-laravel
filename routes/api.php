@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth.api-key']], function () {
      */
     Route::group(['prefix' => 'heartbeat'], function () {
         Route::post('/send-pulse', 'Heartbeat\SendPulseController');
-        Route::post('/check-pulse', 'Heartbeat\CheckPulseController');
+        Route::get('/check-pulse/{code}/{offset_time?}', 'Heartbeat\CheckPulseController');
     });
 });
 

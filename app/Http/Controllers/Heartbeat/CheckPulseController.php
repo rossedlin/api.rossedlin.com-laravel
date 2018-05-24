@@ -7,6 +7,7 @@ use App\Exceptions\ApiException;
 use \App\Http\Controllers\Base;
 use \App\Models\HeartbeatEntity;
 use \App\Models\HeartbeatPulse;
+use Illuminate\Http\Request;
 
 /**
  * Created by PhpStorm.
@@ -28,9 +29,16 @@ class CheckPulseController extends Base\ApiController
      */
     protected function getPayload()
     {
-        $code       = $this->getRequest()->post('code');
-        $offsetTime = (int)$this->getRequest()->post('offset_time');
+        $code       = $this->getRequest()->route('code');
+        $offsetTime = (int)$this->getRequest()->route('offset_time');
         $alive      = false;
+
+        /**
+         * Check GET vars
+         */
+        if (trim($code) === '') {
+            throw new ApiException("Code is blank");
+        }
 
         /**
          * @var \App\Models\HeartbeatEntity $entity
