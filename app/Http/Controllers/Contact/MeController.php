@@ -36,15 +36,15 @@ class MeController extends Base\ApiController
          * Checks
          */
         if ($name === null) {
-            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing an name...");
+            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing a <i>name</i>...");
         }
 
         if ($email === null) {
-            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing an email...");
+            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're missing a <i>email</i>...");
         }
 
         if ($message === null) {
-            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're sending a blank message...");
+            throw new ApiException("<strong>Ops...</strong> <br />Looks like you're sending a blank <i>message</i>...");
         }
 
         /**
