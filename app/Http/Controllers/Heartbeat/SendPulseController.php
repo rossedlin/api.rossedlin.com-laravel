@@ -45,6 +45,7 @@ class SendPulseController extends Base\ApiController
             $entity->save();
         }
 
+
         $pulse                      = new HeartbeatPulse();
         $pulse->heartbeat_entity_id = $entity->id;
         $pulse->ip_address          = $this->getRequest()->ip();
