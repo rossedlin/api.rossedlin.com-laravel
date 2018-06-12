@@ -8,7 +8,6 @@ Route::get('/uptime', 'UptimeController');
  */
 Route::group(['prefix' => 'debug'], function () {
     Route::get('vue', 'Debug\VueController');
-    Route::get('user', 'Debug\UserController');
 });
 
 /**
