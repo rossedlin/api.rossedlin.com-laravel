@@ -1,0 +1,22 @@
+language: php
+php:
+  - 7.1
+
+before_script:
+  - composer install
+
+addons:
+  sonarcloud:
+    organization: "rossedlin-github" # the key of the org you chose at step #3
+    token:
+      secure: d1d502575bde433f3778be96e666ebb7304a0b64 # encrypted value of your token
+script:
+  # other script steps might be done before running the actual analysis
+  - vendor/phpunit/phpunit/phpunit
+  - sonar-scanner
+
+
+
+notifications:
+  email:
+    - travis-ci@rossedlin.com
