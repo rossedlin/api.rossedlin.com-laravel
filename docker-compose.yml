@@ -4,16 +4,13 @@ services:
    web:
      depends_on:
        - db
-     image: api:latest
-     build: .
+     image: rossedlin/apache-php:7.2
      ports:
        - "80:80"
+     env_file:
+       - .env
      volumes:
        - ./:/var/www
-#     environment:
-#       WORDPRESS_DB_HOST: db:3306
-#       WORDPRESS_DB_USER: api
-#       WORDPRESS_DB_PASSWORD: Passw0rd
 
    db:
      image: mysql:5.7
