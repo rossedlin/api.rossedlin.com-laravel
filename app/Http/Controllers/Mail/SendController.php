@@ -5,13 +5,6 @@ namespace App\Http\Controllers\Mail;
 use \App\Exceptions\ApiException;
 use \App\Http\Controllers\Base;
 use App\Mail\BasicMail;
-use App\Mail\CleanMail;
-use App\Mail\HelloWorldMail;
-use \App\Objects\Mail;
-
-//use \Cryslo\Api;
-//use \Cryslo\Core;
-//use \Cryslo\Object;
 
 /**
  * Created by PhpStorm.
