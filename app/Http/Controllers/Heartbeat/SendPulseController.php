@@ -29,9 +29,16 @@ class SendPulseController extends Base\ApiController
     {
         $new_entity     = false;
         $recorded_pulse = false;
-        $code           = $this->getRequest()->post('code');
-        $data           = $this->getRequest()->post('data');
-        $data_type      = $this->getRequest()->post('data_type');
+        $code           = $this->getRequest()->post('code', false);
+        $data           = $this->getRequest()->post('data', null);
+        $data_type      = $this->getRequest()->post('data_type', null);
+
+        /**
+         * Validation
+         */
+        if ($code === false || $code === null) {
+            throw new ApiException("Code is missing");
+        }
 
         /**
          * @var \App\Models\HeartbeatEntity $entity
