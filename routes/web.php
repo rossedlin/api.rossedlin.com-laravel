@@ -11,6 +11,13 @@ Route::group(['prefix' => 'debug'], function () {
 });
 
 /**
+ * Admin
+ */
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('dashboard', 'Admin\DashboardController@index');
+});
+
+/**
  * Authentication
  */
 //Route::group(['prefix' => 'auth'], function (){

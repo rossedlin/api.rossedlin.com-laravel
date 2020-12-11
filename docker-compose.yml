@@ -4,7 +4,7 @@ services:
    web:
      depends_on:
        - db
-     image: rossedlin/centos-apache-php:7.2-dev
+     image: rossedlin/php-apache:7.3
      ports:
        - "80:80"
      env_file:
