@@ -2,45 +2,42 @@
 
 namespace App\Models;
 
-use Cryslo\Core\SaltHash;
-use Illuminate\Database\Eloquent\Model;
-use \App\Enums\UserAttributes;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model
+class User extends Authenticatable
 {
+    use HasFactory, Notifiable;
+
     /**
-     * The table associated with the model.
+     * The attributes that are mass assignable.
      *
-     * @var string
+     * @var array
      */
-    protected $table = UserAttributes::_TABLE;
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
 
     /**
-     * @return string
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
      */
-    public function getUsername(): string
-    {
-        return $this->getAttribute(UserAttributes::USERNAME);
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     /**
-     * @return string
+     * The attributes that should be cast to native types.
+     *
+     * @var array
      */
-    public function getEmail(): string
-    {
-        return $this->getAttribute(UserAttributes::USERNAME);
-    }
-
-    public function isPasswordValid($password)
-    {
-        //todo
-    }
-
-    public function setPassword($password)
-    {
-        $saltHash = SaltHash::generate($password);
-
-        $this->setAttribute(UserAttributes::SALT, $saltHash['salt']);
-        $this->setAttribute(UserAttributes::PASSWORD, $saltHash['hash']);
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }

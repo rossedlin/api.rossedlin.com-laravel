@@ -23,16 +23,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('heartbeat/send-pulse', 'Admin\HeartbeatController@sendPulse')->name('admin.heartbeat.send-pulse');
 });
 
+
 /**
  * Authentication
  */
-//Route::group(['prefix' => 'auth'], function (){
-//    Route::post('login', 'Auth\AuthController@postLogin');
-//    Route::get('login', 'Auth\AuthController@getLogin');
-//    Route::get('logout', 'Auth\AuthController@getLogout');
-//});
-//
-//Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-//    Route::get('login', 'Auth\AuthController@getLogin');
-//});
-//Auth::routes();
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
