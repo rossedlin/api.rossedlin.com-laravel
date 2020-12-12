@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Base;
+namespace App\Http\Controllers\Api;
 
 use App\Exceptions\ApiException;
 use App\Models\LogRequests;
@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-abstract class ApiController extends BaseController
+abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -30,7 +30,7 @@ abstract class ApiController extends BaseController
      *
      * @return string
      */
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
         $this->request = $request;
 
@@ -41,10 +41,10 @@ abstract class ApiController extends BaseController
          *
          * @var LogRequests $log
          */
-        $log                  = $this->getRequest()->attributes->get('log_request');
-        $log->response_status = 200; //OK
-        $log->response_body   = json_encode($output);
-        $log->save();
+//        $log                  = $this->getRequest()->attributes->get('log_request');
+//        $log->response_status = 200; //OK
+//        $log->response_body   = json_encode($output);
+//        $log->save();
 
         return response()->json($output);
     }

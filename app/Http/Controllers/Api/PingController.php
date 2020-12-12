@@ -1,9 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use \Cryslo\Enums;
-use \Cryslo\Core;
 
 /**
  * Created by PhpStorm.
@@ -17,7 +15,7 @@ use \Cryslo\Core;
  *
  * @package App\Http\Controllers
  */
-class PingController extends Base\ApiController
+class PingController extends Controller
 {
     /**
      * @return array
@@ -25,7 +23,7 @@ class PingController extends Base\ApiController
     protected function getPayload()
     {
         return [
-            'ip' => Core\Request::server(Enums::REMOTE_ADDR),
+            'ip' => \Edlin\Request::server(\Edlin\Enums::REMOTE_ADDR),
         ];
     }
 }
