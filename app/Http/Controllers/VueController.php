@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Debug;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Base;
 use Illuminate\Http\Request;
 
 /**
@@ -14,7 +13,7 @@ use Illuminate\Http\Request;
  * Date: 15/03/18
  * Time: 10:42
  */
-class VueController extends Base\WebController
+class VueController extends Controller
 {
     /**
      * @param Request $request

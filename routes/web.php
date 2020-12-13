@@ -8,9 +8,9 @@ Route::get('/uptime', App\Http\Controllers\UptimeController::class);
 /**
  * Debug
  */
-//Route::group(['prefix' => 'debug'], function () {
-//    Route::get('vue', 'Debug\VueController');
-//});
+Route::group(['prefix' => 'debug'], function () {
+    Route::get('vue', App\Http\Controllers\VueController::class);
+});
 
 /**
  * Admin
