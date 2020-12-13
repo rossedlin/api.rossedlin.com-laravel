@@ -15,15 +15,22 @@ Route::group(['prefix' => 'debug'], function () {
 /**
  * Admin
  */
-//Route::group(['prefix' => 'admin'], function () {
-//    Route::get('dashboard', 'Admin\DashboardController@index')->name('admin.dashboard.index');
-//
-//    /**
-//     * Heartbeat
-//     */
-//    Route::get('heartbeat/check-pulse', 'Admin\HeartbeatController@checkPulse')->name('admin.heartbeat.check-pulse');
-//    Route::get('heartbeat/send-pulse', 'Admin\HeartbeatController@sendPulse')->name('admin.heartbeat.send-pulse');
-//});
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', App\Http\Controllers\Admin\DashboardController::class)
+         ->name('admin.dashboard.index');
+
+    /**
+     * Heartbeat
+     */
+    Route::get('heartbeat/check-entity', \App\Http\Controllers\Admin\Heartbeat\CheckEntityController::class)
+         ->name('admin.heartbeat.check-entity');
+
+    Route::get('heartbeat/check-pulse/{heartbeatEntity}', \App\Http\Controllers\Admin\Heartbeat\CheckPulseController::class)
+         ->name('admin.heartbeat.check-pulse');
+
+    Route::get('heartbeat/send-pulse', App\Http\Controllers\VueController::class)
+         ->name('admin.heartbeat.send-pulse');
+});
 
 
 /**
