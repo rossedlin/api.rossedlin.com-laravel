@@ -1,50 +1,52 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 
 /**
  * Ping
  */
-Route::get('/ping', 'PingController');
+Route::get('/ping', [App\Http\Controllers\Api\PingController::class, 'index']);
 
 
 
-/**
- * Test Methods
- */
-Route::group(['prefix' => 'test'], function () {
-    Route::post('/post', 'Test\Post');
-});
-
-
-
-/**
- * Main Security Group
- */
-Route::group(['middleware' => ['auth.api-key']], function () {
-
-    /**
-     * Contact
-     */
-    Route::group(['prefix' => 'contact'], function () {
-        Route::post('/me', 'Contact\MeController');
-    });
-
-    /**
-     * Email
-     */
-    Route::group(['prefix' => 'mail'], function () {
-        Route::post('/send', 'Mail\SendController');
-    });
-
-    /**
-     * Heartbeat
-     */
-    Route::group(['prefix' => 'heartbeat'], function () {
-        Route::post('/send-pulse', 'Heartbeat\SendPulseController');
-        Route::get('/check-pulse/{code}/{offset_time?}', 'Heartbeat\CheckPulseController');
-    });
-});
+///**
+// * Test Methods
+// */
+//Route::group(['prefix' => 'test'], function () {
+//    Route::post('/post', 'Test\Post');
+//});
+//
+//
+//
+///**
+// * Main Security Group
+// */
+//Route::group(['middleware' => ['auth.api-key']], function () {
+//
+//    /**
+//     * Contact
+//     */
+//    Route::group(['prefix' => 'contact'], function () {
+//        Route::post('/me', 'Contact\MeController');
+//    });
+//
+//    /**
+//     * Email
+//     */
+//    Route::group(['prefix' => 'mail'], function () {
+//        Route::post('/send', 'Mail\SendController');
+//    });
+//
+//    /**
+//     * Heartbeat
+//     */
+//    Route::group(['prefix' => 'heartbeat'], function () {
+//        Route::post('/send-pulse', 'Heartbeat\SendPulseController');
+//        Route::get('/check-pulse/{code}/{offset_time?}', 'Heartbeat\CheckPulseController');
+//    });
+//});
 
 
 
