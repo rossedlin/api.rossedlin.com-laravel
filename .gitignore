@@ -1,5 +1,7 @@
 /node_modules
+/public/.well-known
 /public/hot
+/public/php_errorlog
 /public/storage
 /storage/*.key
 /vendor
