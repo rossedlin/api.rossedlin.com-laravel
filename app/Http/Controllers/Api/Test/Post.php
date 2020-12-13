@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Test;
+namespace App\Http\Controllers\Api\Test;
 
-use \App\Http\Controllers\Base;
+use \App\Http\Controllers\Api\Controller;
 
 /**
  * Created by PhpStorm.
@@ -13,7 +13,7 @@ use \App\Http\Controllers\Base;
  * Date: 22/02/18
  * Time: 10:54
  */
-class Post extends Base\ApiController
+class Post extends Controller
 {
     /**
      * @return array

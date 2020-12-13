@@ -30,7 +30,7 @@ abstract class Controller extends BaseController
      *
      * @return string
      */
-    public function index(Request $request)
+    public function __invoke(Request $request)
     {
         $this->request = $request;
 
