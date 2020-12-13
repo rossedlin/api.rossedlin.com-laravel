@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Heartbeat;
+namespace App\Http\Controllers\Api\Heartbeat;
+
+use \App\Http\Controllers\Api\Controller;
 
 use App\Enums\TimeAttributes;
 use App\Exceptions\ApiException;
-use \App\Http\Controllers\Base;
+
 use \App\Models\HeartbeatEntity;
 use \App\Models\HeartbeatPulse;
-use Illuminate\Http\Request;
 
 /**
  * Created by PhpStorm.
@@ -21,7 +22,7 @@ use Illuminate\Http\Request;
  * Class CheckPulseController
  * @package App\Http\Controllers\Heartbeat
  */
-class CheckPulseController extends Base\ApiController
+class CheckPulseController extends Controller
 {
     /**
      * @return array
@@ -29,9 +30,9 @@ class CheckPulseController extends Base\ApiController
      */
     protected function getPayload()
     {
-        $code       = $this->getRequest()->route('code');
+        $code = $this->getRequest()->route('code');
         $offsetTime = (int)$this->getRequest()->route('offset_time');
-        $alive      = false;
+        $alive = false;
 
         /**
          * Check GET vars
@@ -43,8 +44,7 @@ class CheckPulseController extends Base\ApiController
         /**
          * @var \App\Models\HeartbeatEntity $entity
          */
-        $entity = HeartbeatEntity::where('code', '=', $code)
-                                 ->first();
+        $entity = HeartbeatEntity::where('code', '=', $code)->first();
 
         if ($entity === null) {
             throw new ApiException("Entity not found");
@@ -54,8 +54,8 @@ class CheckPulseController extends Base\ApiController
          * @var \App\Models\HeartbeatEntity $entity
          */
         $pulse = HeartbeatPulse::where('heartbeat_entity_id', '=', $entity->id)
-                               ->orderBy('created_at', 'desc')
-                               ->first();
+            ->orderBy('created_at', 'desc')
+            ->first();
 
         if ($pulse === null) {
             throw new ApiException("Pulse not found");
@@ -65,7 +65,7 @@ class CheckPulseController extends Base\ApiController
          * Check if Alive
          */
         $pulseTime = strtotime($pulse->created_at);
-        $nowTime   = time();
+        $nowTime = time();
         if ($offsetTime === null || $offsetTime === 0) {
             $offsetTime = TimeAttributes::SECONDS_IN_MINUTE;
         }
@@ -75,12 +75,12 @@ class CheckPulseController extends Base\ApiController
         }
 
         return [
-            'code'        => $code,
+            'code' => $code,
             'offset_time' => $offsetTime,
-            'alive'       => $alive,
-            'last_pulse'  => ($nowTime - $pulseTime),
-            'entity'      => $entity,
-            'pulse'       => $pulse,
+            'alive' => $alive,
+            'last_pulse' => ($nowTime - $pulseTime),
+            'entity' => $entity,
+            'pulse' => $pulse,
         ];
     }
 }

@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Heartbeat;
+namespace App\Http\Controllers\Api\Heartbeat;
+
+use \App\Http\Controllers\Api\Controller;
 
 use App\Exceptions\ApiException;
-use \App\Http\Controllers\Base;
+
 use \App\Models\HeartbeatEntity;
 use \App\Models\HeartbeatPulse;
 
@@ -19,7 +21,7 @@ use \App\Models\HeartbeatPulse;
  *
  * @package App\Http\Controllers
  */
-class SendPulseController extends Base\ApiController
+class SendPulseController extends Controller
 {
     /**
      * @return array
