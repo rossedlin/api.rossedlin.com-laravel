@@ -2,11 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-//Route::get('/', 'WelcomeController');
+Route::get('/', App\Http\Controllers\WelcomeController::class);
 Route::get('/uptime', App\Http\Controllers\UptimeController::class);
 
 /**
