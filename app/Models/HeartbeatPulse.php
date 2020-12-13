@@ -11,6 +11,16 @@ use \Illuminate\Database\Eloquent\Builder;
  * @package App\Model
  *
  * @method static where($column, $operator = null, $value = null, $boolean = 'and') Builder
+ *
+ * @property HeartbeatEntity $heartbeatEntity
+ *
+ * @property int             $id
+ * @property int             $heartbeat_entity_id
+ * @property string          $ip_address
+ * @property string          $data
+ * @property string          $data_type
+ * @property string          $created_at
+ * @property string          $updated_at
  */
 class HeartbeatPulse extends Model
 {
@@ -20,4 +30,12 @@ class HeartbeatPulse extends Model
      * @var string
      */
     protected $table = PulseAttributes::_TABLE;
+
+    /**
+     * Get the user that owns the phone.
+     */
+    public function heartbeatEntity()
+    {
+        return $this->belongsTo(HeartbeatEntity::class);
+    }
 }

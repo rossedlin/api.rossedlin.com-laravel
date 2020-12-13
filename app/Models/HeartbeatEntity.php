@@ -24,4 +24,12 @@ class HeartbeatEntity extends Model
      * @var string
      */
     protected $table = EntityAttributes::_TABLE;
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function heartbeatPulses()
+    {
+        return $this->hasMany(HeartbeatPulse::class);
+    }
 }
