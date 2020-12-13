@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Base\WebController;
+use App\Http\Controllers\Controller;
 
 /**
  * Created by PhpStorm.
@@ -16,14 +16,14 @@ use App\Http\Controllers\Base\WebController;
  * Class WelcomeController
  * @package App\Http\Controllers
  */
-class DashboardController extends WebController
+class DashboardController extends Controller
 {
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __invoke()
     {
         return view('admin.dashboard.index');
     }

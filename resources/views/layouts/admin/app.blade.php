@@ -68,6 +68,7 @@
             <!-- End Top Search Bar -->
 
             <!-- Messages/Notifications/Top Search Bar/Top User -->
+            <?php /*
             <div class="col-auto d-flex g-py-12 g-pl-40--lg ml-auto">
                 <!-- Top Messages -->
                 <div class="g-pos-rel g-hidden-sm-down g-mr-5">
@@ -387,6 +388,7 @@
                 </div>
                 <!-- End Top User -->
             </div>
+            */ ?>
             <!-- End Messages/Notifications/Top Search Bar/Top User -->
 
             <!-- Top Activity Toggler -->
@@ -402,6 +404,7 @@
         </nav>
 
         <!-- Top Activity Panel -->
+        <?php /*
         <div id="activityMenu"
              class="js-custom-scroll u-header-sidebar g-pos-fix g-top-0 g-left-auto g-right-0 g-z-index-4 g-width-300 g-width-400--sm g-height-100vh"
              aria-labelledby="activityInvoker">
@@ -791,6 +794,7 @@
             </section>
             <!-- End Activity Transactions -->
         </div>
+        */ ?>
         <!-- End Top Activity Panel -->
 
     </div>

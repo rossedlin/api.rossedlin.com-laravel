@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Heartbeat;
 
-use App\Http\Controllers\Base\WebController;
+use App\Http\Controllers\Controller;
 use App\Models\HeartbeatEntity;
 use App\Models\HeartbeatPulse;
 
@@ -18,16 +18,17 @@ use App\Models\HeartbeatPulse;
  * Class HeartbeatController
  * @package App\Http\Controllers
  */
-class HeartbeatController extends WebController
+class CheckEntityController extends Controller
 {
     /**
      * @return \Illuminate\Http\Response
      */
-    public function checkPulse()
+    public function __invoke()
     {
+//        dd(route('admin.heartbeat.check-pulse', [1]));
         $heartbeatEntities = HeartbeatEntity::all();
 
-        return view('admin.heartbeat.check-pulse', [
+        return view('admin.heartbeat.check-entity', [
             'heartbeatEntities' => $heartbeatEntities,
         ]);
     }
