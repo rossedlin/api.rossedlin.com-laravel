@@ -16,12 +16,12 @@ use App\Models\Migrations;
  * Class UptimeController
  * @package App\Http\Controllers
  */
-class UptimeController extends Base\WebController
+class UptimeController extends Controller
 {
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function __invoke()
     {
