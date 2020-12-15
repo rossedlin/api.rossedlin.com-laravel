@@ -14,6 +14,8 @@ use App\Enums\LogRequestsAttributes;
  * @property string          $request_header
  * @property string          $request_args
  * @property string          $request_body
+ * @property string          $response_status
+ * @property string          $response_body
  */
 class LogRequests extends Model
 {

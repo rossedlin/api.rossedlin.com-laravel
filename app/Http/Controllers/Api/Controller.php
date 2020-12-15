@@ -41,10 +41,10 @@ abstract class Controller extends BaseController
          *
          * @var LogRequests $log
          */
-//        $log                  = $this->getRequest()->attributes->get('log_request');
-//        $log->response_status = 200; //OK
-//        $log->response_body   = json_encode($output);
-//        $log->save();
+        $log                  = $this->getRequest()->attributes->get('log_request');
+        $log->response_status = 200; //OK
+        $log->response_body   = json_encode($output);
+        $log->save();
 
         return response()->json($output);
     }
