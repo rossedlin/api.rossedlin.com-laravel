@@ -3,14 +3,10 @@
 namespace App\Models;
 
 use App\Enums\Heartbeat\PulseAttributes;
-use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class HeartbeatPulse
  * @package App\Model
- *
- * @method static where($column, $operator = null, $value = null, $boolean = 'and') Builder
  *
  * @property HeartbeatEntity $heartbeatEntity
  *
