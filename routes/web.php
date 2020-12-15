@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', App\Http\Controllers\WelcomeController::class);
 Route::get('/uptime', App\Http\Controllers\UptimeController::class);
+Route::get('/uptime/sunters-wood-close', App\Http\Controllers\Uptime\SuntersWoodCloseController::class);
 
 /**
  * Debug
