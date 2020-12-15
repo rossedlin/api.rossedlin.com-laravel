@@ -28,7 +28,7 @@ class SuntersWoodCloseController extends Controller
             /** @var HeartbeatEntity $heartbeatEntity */
             $heartbeatEntity = \App\Models\HeartbeatEntity::where('code', '=', 'sunters-wood-close')->get();
 
-            if ($heartbeatEntity instanceof HeartbeatEntity && $heartbeatEntity->isAlive()) {
+            if ($heartbeatEntity instanceof HeartbeatEntity && $heartbeatEntity->isAlive(300)) {
                 return 'alive';
             }
         } catch (\Exception $e) {
