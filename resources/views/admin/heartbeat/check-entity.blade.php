@@ -35,7 +35,7 @@
                             <span class="text-danger"><strong>Dead</strong></span>
                         @endif
                     </td>
-                    <td>{{$heartbeatEntity->created_at}}</td>
+                    <td>{{$heartbeatEntity->latestHeartbeatPulse->created_at}}</td>
                     <td>{{$heartbeatEntity->latestHeartbeatPulse->ip_address}}</td>
                     <td>
                         <a href="{{route('admin.heartbeat.check-pulse', [$heartbeatEntity->id])}}"

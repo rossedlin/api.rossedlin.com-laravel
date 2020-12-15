@@ -42,7 +42,7 @@ class HeartbeatEntity extends Model
     {
         $heartbeatPulse = HeartbeatPulse::where('heartbeat_entity_id', '=', $this->id)
                                         ->orderBy('created_at', 'DESC')
-                                        ->get()->first();
+                                        ->first();
 
         if ($heartbeatPulse instanceof HeartbeatPulse) {
             return $heartbeatPulse;
