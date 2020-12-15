@@ -18,8 +18,9 @@
                 <th>#</th>
                 <th>Code</th>
                 <th>Created At</th>
-                <th>Updated At</th>
-                <th>Actions</th>
+                <th>IP Address</th>
+                <th>Data Type</th>
+                <th>Data</th>
             </tr>
             </thead>
             <tbody>
@@ -28,10 +29,9 @@
                     <td>{{$heartbeatPulse->id}}</td>
                     <td>{{$heartbeatPulse->heartbeatEntity->code}}</td>
                     <td>{{$heartbeatPulse->created_at}}</td>
-                    <td>{{$heartbeatPulse->updated_at}}</td>
-                    <td>
-                        <a href="#" class="btn btn-info">View</a>
-                    </td>
+                    <td>{{$heartbeatPulse->ip_address}}</td>
+                    <td>{{$heartbeatPulse->data_type}}</td>
+                    <td>{{$heartbeatPulse->data}}</td>
                 </tr>
             @endforeach
             </tbody>

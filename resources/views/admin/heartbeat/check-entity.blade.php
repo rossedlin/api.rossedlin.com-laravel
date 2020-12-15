@@ -17,8 +17,8 @@
             <tr>
                 <th>#</th>
                 <th>Code</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <th>Latest Pulse</th>
+                <th>latest IP Address</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -28,7 +28,7 @@
                     <td>{{$heartbeatEntity->id}}</td>
                     <td>{{$heartbeatEntity->code}}</td>
                     <td>{{$heartbeatEntity->created_at}}</td>
-                    <td>{{route('admin.heartbeat.check-pulse', [$heartbeatEntity->id])}}</td>
+                    <td>{{$heartbeatEntity->latestHeartbeatPulse->ip_address}}</td>
                     <td>
                         <a href="{{route('admin.heartbeat.check-pulse', [$heartbeatEntity->id])}}"
                            class="btn btn-info">{{ __('View') }}</a>

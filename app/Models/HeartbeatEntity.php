@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @method static where($column, $operator = null, $value = null, $boolean = 'and') Builder
  *
- * @property int    $id
- * @property string $code
- * @property string $created_at
- * @property string $updated_at
+ * @property int                 $id
+ * @property string              $code
+ * @property string              $created_at
+ * @property string              $updated_at
+ * @property HeartbeatPulse|null $latestHeartbeatPulse
  */
 class HeartbeatEntity extends Model
 {
@@ -31,5 +32,21 @@ class HeartbeatEntity extends Model
     public function heartbeatPulses()
     {
         return $this->hasMany(HeartbeatPulse::class);
+    }
+
+    /**
+     * @return HeartbeatPulse|null
+     */
+    public function getLatestHeartbeatPulseAttribute()
+    {
+        $heartbeatPulse = HeartbeatPulse::where('heartbeat_entity_id', '=', $this->id)
+                                        ->orderBy('created_at', 'DESC')
+                                        ->get()->first();
+
+        if ($heartbeatPulse instanceof HeartbeatPulse) {
+            return $heartbeatPulse;
+        }
+
+        return null;
     }
 }
