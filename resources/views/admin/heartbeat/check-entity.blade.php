@@ -29,7 +29,7 @@
                     <td>{{$heartbeatEntity->id}}</td>
                     <td>{{$heartbeatEntity->code}}</td>
                     <td>
-                        @if($heartbeatEntity->isAlive())
+                        @if($heartbeatEntity->isAlive(3600))
                             <span class="text-success"><strong>Alive</strong></span>
                         @else
                             <span class="text-danger"><strong>Dead</strong></span>
