@@ -3,8 +3,18 @@
 namespace App\Models;
 
 use App\Enums\LogRequestsAttributes;
-use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class LogRequests
+ * @package App\Model
+ *
+ * @property int             $id
+ * @property string          $request_ip
+ * @property string          $request_uri
+ * @property string          $request_header
+ * @property string          $request_args
+ * @property string          $request_body
+ */
 class LogRequests extends Model
 {
     /**
