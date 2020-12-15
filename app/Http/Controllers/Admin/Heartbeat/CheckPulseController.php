@@ -29,7 +29,10 @@ class CheckPulseController extends Controller
      */
     public function __invoke(Request $request, HeartbeatEntity $heartbeatEntity)
     {
-        $heartbeatPulses = HeartbeatPulse::where('heartbeat_entity_id', '=', $heartbeatEntity->id)->get();
+        $heartbeatPulses = HeartbeatPulse::where('heartbeat_entity_id', '=', $heartbeatEntity->id)
+                                         ->orderBy('created_at', 'DESC')
+                                         ->limit(100)
+                                         ->get();
 
         return view('admin.heartbeat.check-pulse', [
             'heartbeatPulses' => $heartbeatPulses,
