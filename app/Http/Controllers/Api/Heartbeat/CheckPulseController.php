@@ -30,9 +30,8 @@ class CheckPulseController extends Controller
      */
     protected function getPayload()
     {
-        $code = $this->getRequest()->route('code');
+        $code       = $this->getRequest()->route('code');
         $offsetTime = (int)$this->getRequest()->route('offset_time');
-        $alive = false;
 
         /**
          * Check GET vars
@@ -54,8 +53,8 @@ class CheckPulseController extends Controller
          * @var \App\Models\HeartbeatEntity $entity
          */
         $pulse = HeartbeatPulse::where('heartbeat_entity_id', '=', $entity->id)
-            ->orderBy('created_at', 'desc')
-            ->first();
+                               ->orderBy('created_at', 'desc')
+                               ->first();
 
         if ($pulse === null) {
             throw new ApiException("Pulse not found");
@@ -64,23 +63,15 @@ class CheckPulseController extends Controller
         /**
          * Check if Alive
          */
-        $pulseTime = strtotime($pulse->created_at);
-        $nowTime = time();
-        if ($offsetTime === null || $offsetTime === 0) {
-            $offsetTime = TimeAttributes::SECONDS_IN_MINUTE;
-        }
 
-        if ($nowTime < ($pulseTime + $offsetTime)) {
-            $alive = true;
-        }
 
         return [
-            'code' => $code,
+            'code'        => $code,
             'offset_time' => $offsetTime,
-            'alive' => $alive,
-            'last_pulse' => ($nowTime - $pulseTime),
-            'entity' => $entity,
-            'pulse' => $pulse,
+            'alive'       => $entity->isAlive(),
+            'last_pulse'  => (time() - strtotime($pulse->created_at)),
+            'entity'      => $entity,
+            'pulse'       => $pulse,
         ];
     }
 }

@@ -17,6 +17,7 @@
             <tr>
                 <th>#</th>
                 <th>Code</th>
+                <th>Status</th>
                 <th>Latest Pulse</th>
                 <th>latest IP Address</th>
                 <th>Actions</th>
@@ -27,6 +28,13 @@
                 <tr>
                     <td>{{$heartbeatEntity->id}}</td>
                     <td>{{$heartbeatEntity->code}}</td>
+                    <td>
+                        @if($heartbeatEntity->isAlive())
+                            <span class="text-success"><strong>Alive</strong></span>
+                        @else
+                            <span class="text-danger"><strong>Dead</strong></span>
+                        @endif
+                    </td>
                     <td>{{$heartbeatEntity->created_at}}</td>
                     <td>{{$heartbeatEntity->latestHeartbeatPulse->ip_address}}</td>
                     <td>

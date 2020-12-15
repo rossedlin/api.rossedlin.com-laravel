@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Heartbeat\EntityAttributes;
+use App\Enums\TimeAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -48,5 +49,27 @@ class HeartbeatEntity extends Model
         }
 
         return null;
+    }
+
+    /**
+     * @param int $offsetTime - Seconds
+     *
+     * @return bool
+     */
+    public function isAlive(int $offsetTime = 60): bool
+    {
+        $heartbeatPulse = $this->latestHeartbeatPulse;
+
+        if ($heartbeatPulse instanceof HeartbeatPulse && $heartbeatPulse->timestamps) {
+
+            $pulseTime = strtotime($heartbeatPulse->created_at);
+            $nowTime   = time();
+
+            if ($nowTime < ($pulseTime + $offsetTime)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
