@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Uptime;
 
 use App\Http\Controllers\Controller;
 use App\Models\HeartbeatEntity;
+use Edlin\Enums\Time;
 
 /**
  * Created by PhpStorm.
@@ -29,7 +30,7 @@ class SuntersWoodCloseController extends Controller
             $heartbeatEntity = \App\Models\HeartbeatEntity::where('code', '=', 'sunters-wood-close')
                                                           ->first();
 
-            if ($heartbeatEntity instanceof HeartbeatEntity && $heartbeatEntity->isAlive(300)) {
+            if ($heartbeatEntity instanceof HeartbeatEntity && $heartbeatEntity->isAlive(Time::MINUTE * 30)) {
                 return 'alive';
             }
         } catch (\Exception $e) {
