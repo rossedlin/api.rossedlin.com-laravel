@@ -48,11 +48,11 @@ class HeartbeatEntity extends Model
     }
 
     /**
-     * @param int $offsetTime - Seconds
+     * @param int $offsetTimeSeconds - Seconds
      *
      * @return bool
      */
-    public function isAlive(int $offsetTime = 60): bool
+    public function isAlive(int $offsetTimeSeconds = 60): bool
     {
         $heartbeatPulse = $this->latestHeartbeatPulse;
 
@@ -61,7 +61,7 @@ class HeartbeatEntity extends Model
             $pulseTime = strtotime($heartbeatPulse->created_at);
             $nowTime   = time();
 
-            if ($nowTime < ($pulseTime + $offsetTime)) {
+            if ($nowTime < ($pulseTime + $offsetTimeSeconds)) {
                 return true;
             }
         }
